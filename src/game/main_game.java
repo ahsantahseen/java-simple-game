@@ -35,12 +35,12 @@ public static void main(String[] args) {
 		System.out.println("|\t\t\t\t\t|");
 		System.out.println("--------------------------------------");
 
-		int enemyHealth = rand.nextInt(maxEnemyHealth);
-		String enemy = enemies[rand.nextInt(enemies.length)];
+		int enemyHealth = rand.nextInt(game.maxEnemyHealth);
+		String enemy = game.enemies[rand.nextInt(game.enemies.length)];
 		System.out.println("\t# " + enemy + " has appeared! #\n");
 
 		while (enemyHealth > 0) {
-			System.out.println("\tYour HP: " + health);
+			System.out.println("\tYour HP: " + game.health);
 			System.out.println("\t" + enemy + "'s HP: " + enemyHealth);
 			System.out.println("\n\tWhat would you like to do?");
 			System.out.println("\t1. Attack");
@@ -49,24 +49,24 @@ public static void main(String[] args) {
 
 			String input = in.nextLine();
 			if (input.equals("1")) {
-				int damageDealt = rand.nextInt(attackDmg);
-				int damageTaken = rand.nextInt(enemyAttackDamage);
+				int damageDealt = rand.nextInt(game.attackDmg);
+				int damageTaken = rand.nextInt(game.enemyAttackDamage);
 
 				enemyHealth -= damageDealt;
-				health -= damageTaken;
+				game.health -= damageTaken;
 
 				System.out.println("\t> You strike the " + enemy + " for " + damageDealt + " damage");
 				System.out.println("\t> You recieved " + damageTaken + " in retaliation");
 
-				if (health < 1) {
+				if (game.health < 1) {
 					System.out.println("\t You have taken too much damage, you are too weak to go on");
 					break;
 				}
 			} else if (input.equals("2")) {
 
-				if (numHealthPots > 0) {
-					health += healthPotionHealAmount;
-					numHealthPots--;
+				if (game.numHealthPots > 0) {
+					game.health += game.healthPotionHealAmount;
+					game.numHealthPots--;
 					System.out.println("\t> You drank a health potion, healed for: " + healthPotionHealAmount + "."
 							+ "\n\t> You now have" + health + "HP." + "\n\t> You now have" + numHealthPots
 							+ " health potions left.\n");
