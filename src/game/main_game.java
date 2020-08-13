@@ -112,6 +112,7 @@ public static void main(String[] args) {
 			break;
 		}
 	}
+	in.close();
 	System.out.println("######################");
 	System.out.println("# THANKS FOR PLAYING #");
 	System.out.println("######################");
