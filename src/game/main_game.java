@@ -67,8 +67,8 @@ public static void main(String[] args) {
 				if (game.numHealthPots > 0) {
 					game.health += game.healthPotionHealAmount;
 					game.numHealthPots--;
-					System.out.println("\t> You drank a health potion, healed for: " + healthPotionHealAmount + "."
-							+ "\n\t> You now have" + health + "HP." + "\n\t> You now have" + numHealthPots
+					System.out.println("\t> You drank a health potion, healed for: " + game.healthPotionHealAmount + "."
+							+ "\n\t> You now have" + game.health + "HP." + "\n\t> You now have" + game.numHealthPots
 							+ " health potions left.\n");
 				} else {
 					System.out.println("\t> You have no health potions, defeat enemies for a chance to get one");
@@ -81,18 +81,18 @@ public static void main(String[] args) {
 				System.out.println("\tInvalid command");
 			}
 		}
-		if (health < 1) {
+		if (game.health < 1) {
 			System.out.println("You limp out of the dungeon, weak from battle.");
 			break;
 		}
 		System.out.println("--------------------------------------");
 		System.out.println(" # " + enemy + " was defeated! # ");
-		System.out.println(" # You have " + health + "HP left # ");
+		System.out.println(" # You have " +game.health + "HP left # ");
 		// If the random number is less than 50 it drops
-		if (rand.nextInt(100) < healthPotionDropChance) {
-			numHealthPots++;
+		if (rand.nextInt(100) < game.healthPotionDropChance) {
+			game.numHealthPots++;
 			System.out.println(" # The " + enemy + " dropped a health potion. # ");
-			System.out.println(" # You now have " + numHealthPots + " health potion(s). # ");
+			System.out.println(" # You now have " + game.numHealthPots + " health potion(s). # ");
 		}
 		System.out.println("--------------------------------------");
 		System.out.println("What would you like to do now?");
